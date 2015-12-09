@@ -8,7 +8,6 @@ RSpec.describe 'Table' do
 
 		it 'returns true when we pass coordinates in the bounds of the table' do
 			expect(@table.in_bounds?(3, 3)).to eq(true)
-			expect(@table.in_bounds?(0, 0)).to eq(true)
 		end
 
 		it 'returns false when we pass coordinates that are outside the table' do

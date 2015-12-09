@@ -10,7 +10,10 @@ class RobotRunner
 	end
 
 	def execute_command(command)
-		if command == "PLACE"
+		#This should acommodate for even the strangest of inputs eg PlAcE
+		command.downcase!
+
+		if command == "place"
 			puts "Where would you like to place the robot? I accept input in the form of 0-#{@table.width - 1} 0-#{@table.height - 1} NORTH/EAST/SOUTH/WEST"
 			x, y, direction = gets.chomp.split(" ")
 
@@ -24,7 +27,7 @@ class RobotRunner
 			end
 
 			@robot.place({x_position: x, y_position: y, direction: direction})
-		elsif command == "REPORT"
+		elsif command == "report"
 			if @robot.on_table?
 				puts "#{@robot.name} is currently at (#{@robot.x_position}, #{@robot.y_position}) facing #{self.human_friendly_direction(@robot.direction)}"
 			else
@@ -37,8 +40,6 @@ class RobotRunner
 
 	def robot_friendly_direction(direction_string)
 		@directions_hash.each do |key, value|
-			puts value
-
 			if value == direction_string
 				return key
 			end

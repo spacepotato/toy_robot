@@ -8,7 +8,6 @@ RSpec.describe 'Robot Runner' do
 	context '#robot_friendly_direction' do
 		it 'returns the correct value' do
 			expect(@runner.robot_friendly_direction("NORTH")).to eq(0)
-			expect(@runner.robot_friendly_direction("WEST")).to eq(3)
 		end
 	end
 
@@ -25,6 +24,4 @@ RSpec.describe 'Robot Runner' do
 			expect(robot).to have_received(:move)
 		end
 	end
-
-
 end

@@ -13,7 +13,7 @@ class Robot
 		if allowed_commands.include?(robot_friendly_command)
 			self.send(robot_friendly_command)
 		else
-			"I'm sorry. I don't understand the command: #{command}. Please try again"
+			puts "I'm sorry. I don't understand the command: #{command}. Please try again"
 		end
 	end
 
@@ -52,7 +52,7 @@ class Robot
 
 			puts "#{@name} is now online. It responds to LEFT/RIGHT/MOVE"
 		else
-			puts "You can't put me their! I'll fall"
+			puts "You can't put me there! I'll fall"
 		end
 	end
 

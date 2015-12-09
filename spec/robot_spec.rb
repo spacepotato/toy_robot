@@ -15,27 +15,45 @@ RSpec.describe 'Robot' do
 		end
 
 		it 'alerts the user if the command is not allowed' do
-			expect(@robot.command("FLY")).to eq("I'm sorry. I don't understand the command: FLY. Please try again")
+			expect{@robot.command("fly")}.to output("I'm sorry. I don't understand the command: fly. Please try again\n").to_stdout
 		end
 	end
 
-	context '#place' do
-		it 'correctly sets the position of the robot' do
+	context '#place (in bounds)' do
+		before(:each) do
 			@robot.place({x_position: 0, y_position: 0, direction: 3})
+		end
 
+		it 'correctly sets the x position of the robot if placed in bounds' do
 			expect(@robot.x_position).to eq(0)
+		end
+
+		it 'correctly sets the y position of the robot if placed in bounds' do
 			expect(@robot.y_position).to eq(0)
+		end
+
+		it 'correctly sets the direction of the robot if placed in bounds' do
 			expect(@robot.direction).to eq(3)
 		end
+	end
 
-		it 'doesn\'t place the robot if it is out of bounds' do
+	context 'place (out of bounds)' do
+		before(:each) do
 			@robot.place({x_position: 5, y_position: 5, direction: 3})
+		end
 
+		it 'doesn\'t set the x position of the robot if placed out of bounds' do
 			expect(@robot.x_position).to eq(nil)
+		end
+
+		it 'doesn\'t set the y position of the robot if placed out of bounds' do
 			expect(@robot.y_position).to eq(nil)
+		end
+
+		it 'doesn\'t set the direction of the robot if placed out of bounds' do
 			expect(@robot.direction).to eq(nil)
 		end
-	end
+	end	
 
 	context '#on_board?' do
 		it 'returns true if the robot has been placed' do
