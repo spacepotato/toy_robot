@@ -5,7 +5,7 @@ class RobotRunner
 	def initialize
 		@table = Table.new(5, 5)
 		@robot = Robot.new(@table)
-		
+
 		@directions_hash = {0 => "NORTH", 1 => "EAST", 2 => "SOUTH", 3 => "WEST"}
 	end
 
@@ -14,7 +14,7 @@ class RobotRunner
 		command.downcase!
 
 		if command == "place"
-			puts "Where would you like to place the robot? I accept input in the form of 0-#{@table.width - 1} 0-#{@table.height - 1} NORTH/EAST/SOUTH/WEST"
+			puts "Where would you like to place the robot? I accept input in the form of #{@table.x_range} #{@table.y_range} NORTH/EAST/SOUTH/WEST"
 			x, y, direction = gets.chomp.split(" ")
 
 			x = Integer x rescue nil
