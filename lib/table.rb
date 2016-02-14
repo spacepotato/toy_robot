@@ -10,10 +10,10 @@ class Table
 	end
 
   def x_range
-    "[#{0} - #{@width - 1}]"
+    "[0 - #{@width - 1}]"
   end
 
   def y_range
-    "[#{0} - #{@height - 1}]"
+    "[0 - #{@height - 1}]"
   end
 end
